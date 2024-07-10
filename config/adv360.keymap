@@ -52,6 +52,41 @@
             bindings = <&kp LC(UP_ARROW)>;
             label = "EXPOSE";
         };
+
+        window_left_half: window_left_half {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LA(LEFT_ARROW))>;
+            label = "WINDOW_LEFT_HALF";
+        };
+
+        window_right_half: window_right_half {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LA(RIGHT))>;
+            label = "WINDOW_RIGHT_HALF";
+        };
+
+        window_full: window_full {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LA(ENTER))>;
+            label = "WINDOW_FULL";
+        };
+
+        window_top_half: window_up {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LA(UP_ARROW))>;
+            label = "WINDOW_UP";
+        };
+
+        window_bottom_half: window_bottom_half {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LA(DOWN))>;
+            label = "WINDOW_BOTTOM_HALF";
+        };
     };
 
     keymap {
@@ -59,11 +94,11 @@
 
         default_layer {
             bindings = <
-&kp EQUAL  &kp N1     &kp N2    &kp N3    &kp N4     &kp N5  &tog 1                                                             &mo 3      &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
-&kp TAB    &kp Q      &kp W     &kp E     &kp R      &kp T   &chat                                                              &none      &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
-&kp ESC    &kp A      &kp S     &kp D     &kp F      &kp G   &spotlight  &kp LCTRL  &kp LALT      &kp PG_UP          &kp PG_DN  &expose    &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z      &kp X     &kp C     &kp V      &kp B                          &kp HOME      &kp RIGHT_CONTROL                        &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-&mo 2      &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT          &kp BSPC    &kp DEL    &kp LGUI      &kp LGUI           &kp ENTER  &kp SPACE          &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 2
+&kp EQUAL   &kp N1     &kp N2    &kp N3    &kp N4     &kp N5  &tog 1                                                         &mo 3      &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
+&kp ESCAPE  &kp Q      &kp W     &kp E     &kp R      &kp T   &chat                                                          &none      &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
+&kp TAB     &kp A      &kp S     &kp D     &kp F      &kp G   &spotlight  &kp LCTRL  &kp LALT      &kp LGUI       &kp ESC    &expose    &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
+&kp LSHFT   &kp Z      &kp X     &kp C     &kp V      &kp B                          &kp HOME      &kp PAGE_UP                          &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+&mo 2       &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT          &kp BSPC    &mo 2      &kp END       &kp PAGE_DOWN  &kp ENTER  &kp SPACE          &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 2
             >;
         };
 
@@ -79,11 +114,11 @@
 
         layer_fn {
             bindings = <
-&kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &tog 1                                      &mo 3   &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
-&trans  &trans  &trans  &trans  &trans  &trans  &none                                       &none   &trans  &trans  &trans  &trans   &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &none   &trans  &trans      &trans  &trans  &none   &trans  &trans  &trans  &trans   &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans      &trans                  &trans  &trans  &trans  &trans   &trans   &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &trans  &trans          &trans  &trans  &trans   &trans   &trans
+&kp F1  &kp F2     &kp F3             &kp F4              &kp F5        &kp F6     &tog 1                                      &mo 3   &kp F7     &kp F8            &kp F9               &kp F10    &kp F11  &kp F12
+&trans  &trans     &trans             &trans              &kp LG(R)     &kp LG(T)  &none                                       &none   &trans     &trans            &kp UP_ARROW         &kp LG(O)  &trans   &trans
+&trans  &kp LG(A)  &kp LG(S)          &kp LG(D)           &kp LG(F)     &trans     &none   &trans  &trans      &trans  &trans  &none   &trans     &kp LEFT_ARROW    &kp DOWN_ARROW       &kp RIGHT  &trans   &trans
+&trans  &kp LG(Z)  &trans             &kp LG(C)           &kp LG(V)     &trans                     &trans      &trans                  &kp LG(N)  &trans            &trans               &trans     &trans   &trans
+&trans  &trans     &window_left_half  &window_right_half  &window_full             &trans  &trans  &trans      &trans  &trans  &trans             &window_top_half  &window_bottom_half  &trans     &trans   &trans
             >;
         };
 
